@@ -6,9 +6,9 @@ host = 'localhost'
 port = 5555
 
 socket_client.connect((host, port)) # встановлення з'єднання
-
-message = input("Enter message from client:\n")
-socket_client.send(message.encode('utf-8'))
-server_message = socket_client.recv(1024)
-print('Message from server: ' + server_message.decode('utf-8'))
-socket_client.close()
+while True:
+    message = input("Enter client message:\n")
+    socket_client.send(message.encode('utf-8'))
+    if message == 'stop':
+        socket_client.close()
+        break
