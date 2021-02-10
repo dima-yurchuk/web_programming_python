@@ -1,7 +1,7 @@
 import threading
 import socket
 
-host = '127.0.0.1'
+host = 'localhost'
 port = 55555
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -11,7 +11,7 @@ server.listen()
 clients = []
 nicknames = []
 
-def broadcast(message):
+def broadcast(message): # надсилаємо повідомлення всім учасникам чату
     for client in clients:
         client.send(message)
 
@@ -31,7 +31,7 @@ def handle(client):
 def recieve():
     while True:
         client, address = server.accept()
-        print(f"Connecte with {str(address)}")
+        print(f"Connected with {str(address)}")
 
         client.send('NICK'.encode('utf-8'))
         nickname = client.recv(1024).decode('utf-8')
