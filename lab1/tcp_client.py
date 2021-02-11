@@ -7,6 +7,8 @@ port = 5555
 
 socket_client.connect((host, port)) # встановлення з'єднання
 socket_client.setblocking(True)
-message = data = "It'і message!\n" * 100000
-socket_client.send(message.encode('utf-8'))
+message = 'Test message!' * 10000000
+a = socket_client.send(message.encode('utf-8'))
+print('Count recieved data - blocking - mode:' + str(a))
+socket_client.send('stop'.encode('utf-8'))
 socket_client.close()

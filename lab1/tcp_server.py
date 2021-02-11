@@ -16,7 +16,8 @@ while True:
     client_socket, addr = server_socket.accept()
     client_message = client_socket.recv(1024)
     while client_message:
-        print('Client message:' + client_message.decode('utf-8'))
+        # print('Client message:' + client_message.decode('utf-8'))
         client_message = client_socket.recv(1024)
     print("*********All data recieved!*****************")
-server_socket.close()
+    server_socket.close()
+    break
