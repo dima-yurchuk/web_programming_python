@@ -34,8 +34,8 @@ print("""<!DOCTYPE HTML>
  <title>Form Processing</title>
  </head>
  <body style='background-color:#CADABA;'>""")
-print(f"""<div style='font-size:25px;position:relative; left:38%;'><b>Прізвище:</b>{firstname}<br>
-<b>Ім'я:</b>{lastname}<br>
+print(f"""<div style='font-size:25px;position:relative; left:38%;'><b>Прізвище:</b>{lastname}<br>
+<b>Ім'я:</b>{firstname}<br>
 <b>Мови програмування:</b>""")
 if len(programming_language) == 0:
     text = 'не вказано'
