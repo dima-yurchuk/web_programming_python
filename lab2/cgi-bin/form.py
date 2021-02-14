@@ -7,10 +7,10 @@ import http.cookies
 
 cookie = http.cookies.SimpleCookie(os.environ.get("HTTP_COOKIE"))
 cookie_value = cookie.get("count_f")
-if cookie_value is None:
+if cookie_value is None: # якщо кукі не встановлено, тобто ми перший раз відкрили сторінку
     print(f"Set-cookie: count_f={1}")
     count_forms = 1
-else:
+else:  # якщо сторінка відкривається повторно
     count_forms = int(cookie_value.value) + 1
     print(f"Set-cookie: count_f={count_forms}")
 
