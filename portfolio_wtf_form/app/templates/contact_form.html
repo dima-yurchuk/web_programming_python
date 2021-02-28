@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{%block title%}Контактна форма{% endblock %}
+{%block contact_form%}
+{%from "_render_field.html" import render_field%}
+ <div class="form-wrapper" align="center">
+
+      <form method="POST" action="{{ url_for('contact') }}">
+               {{form.csrf_token}}
+              <div class="flash_message">{% for msg in get_flashed_messages() %}
+               {{msg}}
+              {% endfor %}
+              </div>
+
+              {%if cookie_name is none%}
+                  {{ render_field(form.name) }}
+                  {{ render_field(form.email) }}
+                  {{ render_field(form.body) }}
+              {%else%}
+          <div style="display:none;">
+               {{form.name(value=cookie_name)}}
+               {{form.email(value=cookie_email)}}
+          </div>
+               {{ render_field(form.body) }}
+              {%endif%}
+<!--          <fieldset class="form-field">-->
+<!--              <div class="label">{{ form.name.label }}</div>-->
+<!--              {{ form.name }}-->
+<!--          </fieldset>-->
+<!--          {%if form.name.errors%}-->
+<!--          <div class="errors">-->
+<!--              {%for error in form.name.errors%}-->
+<!--              {{error}}-->
+<!--              {%endfor%}-->
+<!--          </div>-->
+<!--          {%endif%}-->
+
+<!--          <fieldset class="form-field">-->
+<!--              <div class="label">{{ form.email.label }}</div>-->
+<!--              {{ form.email }}-->
+<!--          </fieldset>-->
+<!--          {%if form.email.errors%}-->
+<!--          <div class="errors">-->
+<!--              {%for error in form.email.errors%}-->
+<!--              {{error}}-->
+<!--              {%endfor%}-->
+<!--          </div>-->
+<!--          {%endif%}-->
+
+
+<!--          <fieldset class="form-field">-->
+<!--              <div class="label">{{ form.body.label }}</div>-->
+<!--              {{ form.body }}-->
+<!--          </fieldset>-->
+<!--          {%if form.body.errors%}-->
+<!--          <div class="errors">-->
+<!--              {%for error in form.body.errors%}-->
+<!--              {{error}}-->
+<!--              {%endfor%}-->
+<!--          </div>-->
+<!--          {%endif%}-->
+          <br>
+          {{ form.submit(class="btn btn-light btn-lg") }}
+
+      </form>
+    </div>
+
+<!--<div class="form-wrapper">-->
+<!--<form action="{{url_for('contact')}}" method="post">-->
+<!--    {{form.csrf_token}}-->
+<!--    {{form.name.label}}-->
+<!--    {{form.name(class="form-control")}}-->
+<!--    {{form.email.label}}-->
+<!--    {{form.email(class="form-control")}}-->
+<!--    {{form.body.label}}-->
+<!--    {{form.body(class="form-control")}}-->
+<!--    <input class="btn btn-primary" type="submit">-->
+
+<!--</form>-->
+<!--</div>-->
+{% endblock %}
