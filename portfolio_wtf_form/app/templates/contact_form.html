@@ -17,10 +17,6 @@
                   {{ render_field(form.email) }}
                   {{ render_field(form.body) }}
               {%else%}
-          <div style="display:none;">
-               {{form.name(value=cookie_name)}}
-               {{form.email(value=cookie_email)}}
-          </div>
                {{ render_field(form.body) }}
               {%endif%}
           <br>
